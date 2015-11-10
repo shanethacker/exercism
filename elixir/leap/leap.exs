@@ -10,6 +10,12 @@ defmodule Year do
   """
   @spec leap_year?(non_neg_integer) :: boolean
   def leap_year?(year) do
-  
+    cond do
+      rem(year, 400) == 0 -> true
+      rem(year, 100) == 0 -> false
+      rem(year, 4) == 0 -> true
+      # It's true that it didn't pass any of the conditions, so it's not a leap year
+      true -> false
+    end
   end
 end
