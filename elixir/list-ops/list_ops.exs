@@ -8,7 +8,17 @@ defmodule ListOps do
 
   @spec count(list) :: non_neg_integer
   def count(l) do
+    count_list(l, 0)
+  end
 
+  # Catch the empty tail of an exhausted list and return the final count 
+  defp count_list([], acc) do
+    acc
+  end
+
+  # Peel off the first element in the list, increment, and continue doing it while passing the new tail and new total
+  defp count_list([head|tail], acc) do
+    count_list(tail, acc + 1)
   end
 
   @spec reverse(list) :: list
