@@ -23,7 +23,17 @@ defmodule ListOps do
 
   @spec reverse(list) :: list
   def reverse(l) do
+    reverse_list(l, [])
+  end
 
+  # Catch the empty list and return the reversed list
+  defp reverse_list([], acc) do
+    acc
+  end
+
+  # Grab the head and stuff it into a new list, then do the same with the tail
+  defp reverse_list([head|tail], acc) do
+    reverse_list(tail, [head|acc])
   end
 
   @spec map(list, (any -> any)) :: list
